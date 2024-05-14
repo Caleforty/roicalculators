@@ -1,85 +1,38 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROI Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
 <body>
-
-<div id="formContainer" style="display: flex; justify-content: space-between; max-width: 1000px; background-color: white; padding: 20px; border-radius: 10px; align-items: flex-end;">
-  <div style="display: flex; flex-direction: column; align-text: center;">
-    <label for="product">Choose a product:</label>
-    <select id="product" name="product" style="border-radius: 5px; margin-top: 10px; width: 205px;">
-  <option value="3285,0.0444">Mega Hippo Gen I</option>
-  <option value="3999,0.0444">Mega Hippo Gen II</option>
-  <option value="1600,0.0333">Pelican Plus Kit</option>
-</select>
-  </div>
-  <div style="margin-left: 10px;">
-    <label for="salary">Total Hourly Salary:</label>
-    <div style="position: relative; display: inline-block;">
-      <span style="position: absolute; left: 5px; top: 25%;">$</span>
-      <input type="number" id="salary" name="salary" value="40" style="border-radius: 5px; width: 80px; margin-top: 10px; padding-left: 15px;">
+    <div id="roiFormContainer">
+        <div>
+            <label for="roiProductSelect">Choose a product:</label>
+            <select id="roiProductSelect">
+                <option value="3285,0.0444">Mega Hippo Gen I</option>
+                <option value="3999,0.0444">Mega Hippo Gen II</option>
+                <option value="1600,0.0333">Pelican Plus Kit</option>
+                <option value="1972,0.0657">Pelican Mixer</option>
+                <option value="689,0.0345">Badger</option>
+            </select>
+        </div>
+        <div>
+            <label for="roiSalaryInput">Total Hourly Salary:</label>
+            <div>
+                <span>$</span>
+                <input type="number" id="roiSalaryInput" value="40">
+            </div>
+        </div>
+        <div>
+            <input type="button" value="Submit" onclick="roiCalculator.calculate()">
+        </div>
+        <div id="roiResultContainer">
+            <p id="roiResultNumber"></p>
+            <button onclick="roiCalculator.reset()">Start Over</button>
+        </div>
     </div>
-  </div>
-<div style="margin-left: 10px;">
-    <input type="button" value="Submit" onclick="calculateROI()" 
-           onmouseover="this.style.color='#242424'" 
-           onmouseout="this.style.color='white'" 
-           style="border-radius: 5px; margin-top: 32px; background-color: #FFAD01; 
-                  border: none; color: white; padding: 8px 16px; font-weight: bold; cursor: pointer;">
-</div>
-
-
-<div id="resultContainer" style="display: none; max-width: 900px; background-color: white; padding: 10px; border-radius: 10px; text-align: center; justify-content: center; align-items: center; flex-direction: column;">
-  <p id="resultText" style="font-size: 38px; font-weight: bold; color: black; font-family: 'Saira', sans-serif;"></p>
-  <p id="resultNumber" style="font-size: 38px; font-weight: bold; color: #DA2128; font-family: 'Saira', sans-serif;"></p>
-  <button onclick="resetForm()" style="margin-top: 5px; border-radius: 5px; background-color: #FFAD01; border: none; color: white; padding: 10px 20px;">Start Over</button>
-</div>
-
-<script>
-function calculateROI() {
-  // Get the product info
-  var productInfo = document.getElementById("product").value.split(",");
-  var productValue = parseFloat(productInfo[0]);
-  var timeSaved = parseFloat(productInfo[1]);
-
-  // Get the hourly salary
-  var hourlySalary = parseFloat(document.getElementById("salary").value);
-
-  // Calculate the number of bags until profit
-  var numBags = Math.ceil(productValue / (timeSaved * hourlySalary));
-
-  // Display the result
-  document.getElementById("resultNumber").innerHTML = numBags + " Bags";
-
-  // Hide the form
-  document.getElementById("formContainer").style.display = "none";
-
-  // Show the result
-  document.getElementById("resultContainer").style.display = "flex";
-}
-
-function resetForm() {
-  // Reset the form
-  document.getElementById("product").selectedIndex = 0;
-  document.getElementById("salary").value = 40;
-
-  // Hide the result
-  document.getElementById("resultContainer").style.display = "none";
-
-  // Show the form
-  document.getElementById("formContainer").style.display = "flex";
-}
-</script>
-
-<style>
-@media (max-width: 700px) {
-  #formContainer {
-    flex-direction: column;
-  }
-  #formContainer > div {
-    margin-left: 0;
-    margin-bottom: 20px;
-  }
-}
-</style>
-
+    <script src="script.js"></script>
 </body>
 </html>
