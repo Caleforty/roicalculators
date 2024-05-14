@@ -11,7 +11,7 @@ document.getElementById('calculate').addEventListener('click', function () {
     const roiBags = Math.ceil(productPrice / ((productBagsPerHour - defaultBagsPerHour) * hourlyCost));
 
     document.getElementById('bags-result').innerText = roiBags;
-    document.querySelector('.input-group').style.display = 'none';
+    document.querySelectorAll('.input-group').forEach(group => group.style.display = 'none');
     document.getElementById('calculate').style.display = 'none';
     document.getElementById('result').classList.remove('hidden');
 });
@@ -20,7 +20,7 @@ document.getElementById('start-over').addEventListener('click', function (e) {
     e.preventDefault();
     document.getElementById('product').value = '3285,45';
     document.getElementById('salary').value = '40';
-    document.querySelector('.input-group').style.display = 'block';
+    document.querySelectorAll('.input-group').forEach(group => group.style.display = 'block');
     document.getElementById('calculate').style.display = 'block';
     document.getElementById('result').classList.add('hidden');
 });
