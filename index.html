@@ -7,31 +7,26 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="roiFormContainer">
-        <div>
-            <label for="roiProductSelect">Choose a product:</label>
-            <select id="roiProductSelect">
-                <option value="3285,0.0444">Mega Hippo Gen I</option>
-                <option value="3999,0.0444">Mega Hippo Gen II</option>
-                <option value="1600,0.0333">Pelican Plus Kit</option>
-                <option value="1972,0.0657">Pelican Mixer</option>
-                <option value="689,0.0345">Badger</option>
+    <div class="calculator">
+        <div id="form">
+            <label for="product">Choose a Product:</label>
+            <select id="product">
+                <option value="3285-45">Mega Hippo Standard Gen I</option>
+                <option value="3999-45">Mega Hippo Heavy Duty Gen II</option>
+                <option value="1972-30">Pelican Mixer</option>
+                <option value="1363-26">Pelican Cart Kit</option>
+                <option value="689-20">Badger</option>
             </select>
-        </div>
-        <div>
-            <label for="roiSalaryInput">Total Hourly Salary:</label>
-            <div>
-                <span>$</span>
-                <input type="number" id="roiSalaryInput" value="40">
-            </div>
-        </div>
-        <div>
- <input type="button" id="calculateButton" value="Submit"
-       style="border-radius: 5px; margin-top: 32px; background-color: #FFAD01; 
-              border: none; color: white; padding: 8px 16px; font-weight: bold; cursor: pointer;">
-        </div><div>
-<button id="resetButton" style="margin-top: 5px; border-radius: 5px; background-color: #FFAD01; border: none; color: white; padding: 10px 20px;">Start Over</button>
 
+            <label for="hourlySalary">Total Hourly Salary:</label>
+            <input type="number" id="hourlySalary" value="40">
+
+            <button id="submit">Calculate</button>
+        </div>
+
+        <div id="result" class="hidden">
+            <p>Bags to Mix Until Profit: <span id="bagsToMix" style="color: red;"></span></p>
+            <a href="#" id="startOver">Start Over</a>
         </div>
     </div>
     <script src="script.js"></script>
