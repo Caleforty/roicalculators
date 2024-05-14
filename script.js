@@ -1,36 +1,20 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const calculateButton = document.getElementById("calculateButton");
-    const resultContainer = document.getElementById("roiResultContainer");
-    const formContainer = document.getElementById("roiFormContainer");
-    const resultNumber = document.getElementById("roiResultNumber");
-    const productSelect = document.getElementById("roiProductSelect");
-    const salaryInput = document.getElementById("roiSalaryInput");
-    const resetButton = document.getElementById("resetButton");
+document.getElementById('submit').addEventListener('click', function() {
+    const product = document.getElementById('product').value.split('-');
+    const price = parseFloat(product[0]);
+    const bagsPerHour = parseInt(product[1]);
+    const hourlySalary = parseFloat(document.getElementById('hourlySalary').value);
+    const workers = 3;
 
-    calculateButton.addEventListener('click', function() {
-        const selectedProduct = productSelect.value.split(",");
-        const productPrice = parseFloat(selectedProduct[0]);
-        const bagsPerHour = parseFloat(selectedProduct[1]);
-        const hourlySalary = parseFloat(salaryInput.value);
+    const totalHourlyCost = hourlySalary * workers;
+    const bagsToMix = Math.ceil(price / (totalHourlyCost / bagsPerHour));
 
-        // Validate inputs
-        if (!productPrice || !bagsPerHour || !hourlySalary || hourlySalary <= 0) {
-            resultNumber.innerHTML = "Please check your inputs. Ensure all fields are filled correctly.";
-            resultContainer.style.display = "flex";
-            return;
-        }
+    document.getElementById('bagsToMix').innerText = bagsToMix;
+    document.getElementById('form').classList.add('hidden');
+    document.getElementById('result').classList.remove('hidden');
+});
 
-        const numBags = Math.ceil(productPrice / (bagsPerHour * hourlySalary));
-
-        resultNumber.innerHTML = `${numBags} Bags`;
-        formContainer.style.display = "none";
-        resultContainer.style.display = "flex";
-    });
-
-    resetButton.addEventListener('click', function() {
-        productSelect.selectedIndex = 0;
-        salaryInput.value = 40;
-        resultContainer.style.display = "none";
-        formContainer.style.display = "flex";
-    });
+document.getElementById('startOver').addEventListener('click', function(event) {
+    event.preventDefault();
+    document.getElementById('form').classList.remove('hidden');
+    document.getElementById('result').classList.add('hidden');
 });
