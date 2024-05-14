@@ -1,20 +1,36 @@
-var roiCalculator = {
-    calculate: function() {
-        var productInfo = document.getElementById("roiProductSelect").value.split(",");
-        var productValue = parseFloat(productInfo[0]);
-        var timeSaved = parseFloat(productInfo[1]);
-        var hourlySalary = parseFloat(document.getElementById("roiSalaryInput").value);
-        var numBags = Math.ceil(productValue / (timeSaved * hourlySalary));
+document.addEventListener('DOMContentLoaded', function() {
+    const calculateButton = document.getElementById("calculateButton");
+    const resultContainer = document.getElementById("roiResultContainer");
+    const formContainer = document.getElementById("roiFormContainer");
+    const resultNumber = document.getElementById("roiResultNumber");
+    const productSelect = document.getElementById("roiProductSelect");
+    const salaryInput = document.getElementById("roiSalaryInput");
+    const resetButton = document.getElementById("resetButton");
 
-        document.getElementById("roiResultNumber").innerHTML = numBags + " Bags";
-        document.getElementById("roiFormContainer").style.display = "none";
-        document.getElementById("roiResultContainer").style.display = "flex";
-    },
+    calculateButton.addEventListener('click', function() {
+        const selectedProduct = productSelect.value.split(",");
+        const productPrice = parseFloat(selectedProduct[0]);
+        const bagsPerHour = parseFloat(selectedProduct[1]);
+        const hourlySalary = parseFloat(salaryInput.value);
 
-    reset: function() {
-        document.getElementById("roiProductSelect").selectedIndex = 0;
-        document.getElementById("roiSalaryInput").value = 40;
-        document.getElementById("roiResultContainer").style.display = "none";
-        document.getElementById("roiFormContainer").style.display = "flex";
-    }
-};
+        // Validate inputs
+        if (!productPrice || !bagsPerHour || !hourlySalary || hourlySalary <= 0) {
+            resultNumber.innerHTML = "Please check your inputs. Ensure all fields are filled correctly.";
+            resultContainer.style.display = "flex";
+            return;
+        }
+
+        const numBags = Math.ceil(productPrice / (bagsPerHour * hourlySalary));
+
+        resultNumber.innerHTML = `${numBags} Bags`;
+        formContainer.style.display = "none";
+        resultContainer.style.display = "flex";
+    });
+
+    resetButton.addEventListener('click', function() {
+        productSelect.selectedIndex = 0;
+        salaryInput.value = 40;
+        resultContainer.style.display = "none";
+        formContainer.style.display = "flex";
+    });
+});
