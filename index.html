@@ -7,26 +7,28 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="calculator">
-        <div id="form">
-            <label for="product">Choose a Product:</label>
-            <select id="product">
-                <option value="3285-45">Mega Hippo Standard Gen I</option>
-                <option value="3999-45">Mega Hippo Heavy Duty Gen II</option>
-                <option value="1972-30">Pelican Mixer</option>
-                <option value="1363-26">Pelican Cart Kit</option>
-                <option value="689-20">Badger</option>
-            </select>
-
-            <label for="hourlySalary">Total Hourly Salary:</label>
-            <input type="number" id="hourlySalary" value="40">
-
-            <button id="submit">Calculate</button>
-        </div>
-
-        <div id="result" class="hidden">
-            <p>Bags to Mix Until Profit: <span id="bagsToMix" style="color: red;"></span></p>
-            <a href="#" id="startOver">Start Over</a>
+    <div class="container">
+        <h1>Return on Investment Calculator</h1>
+        <div class="calculator">
+            <div class="input-group">
+                <label for="product">Choose a Product:</label>
+                <select id="product">
+                    <option value="3285,45">Mega Hippo Standard Gen I ($3285; 45 bags/hr)</option>
+                    <option value="3999,45">Mega Hippo Heavy Duty Gen II ($3999; 45 bags/hr)</option>
+                    <option value="1972,30">Pelican Mixer ($1972; 30 bags/hr)</option>
+                    <option value="1363,26">Pelican Cart Kit ($1363; 26 bags/hr)</option>
+                    <option value="689,20">Badger ($689; 20 bags/hr)</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label for="salary">Total Hourly Salary:</label>
+                <input type="number" id="salary" value="40">
+            </div>
+            <button id="calculate">Submit</button>
+            <div id="result" class="hidden">
+                <p>Bags to Mix Until Profit: <span id="bags-result" class="red"></span></p>
+                <a href="#" id="start-over">Start Over</a>
+            </div>
         </div>
     </div>
     <script src="script.js"></script>
