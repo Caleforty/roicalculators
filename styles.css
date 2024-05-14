@@ -1,51 +1,96 @@
-#roiFormContainer {
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
     display: flex;
-    justify-content: space-between;
-    max-width: 1000px;
-    background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    align-items: flex-end;
-}
-
-#roiFormContainer div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-#roiFormContainer input[type="number"], #roiFormContainer select {
-    border-radius: 5px;
-    margin-top: 10px;
-    width: 205px;
-    padding-left: 15px;
-}
-
-#roiResultContainer {
-    display: none;
-    max-width: 900px;
-    background-color: white;
-    padding: 10px;
-    border-radius: 10px;
-    text-align: center;
     justify-content: center;
     align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    width: 100%;
+}
+
+h1 {
+    text-align: center;
+}
+
+.calculator {
+    display: flex;
     flex-direction: column;
 }
 
-input[type="button"] {
-    border-radius: 5px;
-    background-color: #FFAD01;
-    border: none;
-    color: white;
-    padding: 8px 16px;
-    font-weight: bold;
-    cursor: pointer;
-    margin-top: 32px;
+.input-group {
+    margin-bottom: 15px;
 }
 
-span {
-    position: absolute;
-    left: 5px;
-    top: 25%;
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+select, input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #FFAD01;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #e69a00;
+}
+
+#result {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.hidden {
+    display: none;
+}
+
+.red {
+    color: red;
+}
+
+#start-over {
+    display: block;
+    margin-top: 10px;
+    color: #0066cc;
+    text-decoration: none;
+}
+
+#start-over:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .calculator {
+        text-align: center;
+    }
+
+    .input-group {
+        text-align: left;
+    }
+
+    button {
+        width: 100%;
+    }
 }
