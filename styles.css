@@ -69,6 +69,8 @@ button:hover {
     text-align: center;
     font-size: 18px;
     color: #333;
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
 .hidden {
@@ -104,4 +106,8 @@ button:hover {
     button {
         width: 100%;
     }
+}
+
+#result.shown {
+    opacity: 1;
 }
